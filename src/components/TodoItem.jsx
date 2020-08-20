@@ -16,6 +16,7 @@ const ListItem = styled.li`
     font-weight: normal;
     font-size: 24px;
     line-height: 28px;
+    cursor: pointer;
 `;
 
 const TodoItem = (props) => {
