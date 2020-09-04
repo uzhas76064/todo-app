@@ -1,8 +1,10 @@
+const {v4: uuidv4} = require('uuid');
+
 let initialState = {
     todos: [
-        { text: 'Сделать уроки', completed: false, id:1 },
-        { text: 'Купить хлеб', completed: false, id:2 },
-        { text: 'Купить молоко', completed: false, id: 3 }
+        { text: 'Сделать уроки', completed: false, id:uuidv4() },
+        { text: 'Купить хлеб', completed: false, id:uuidv4() },
+        { text: 'Купить молоко', completed: false, id: uuidv4() }
     ]
 }
 
