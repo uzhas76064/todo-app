@@ -1,8 +1,7 @@
 import React from 'react';
-import './App.css';
 import styled from 'styled-components';
-import TodoList from "./components/TodoList";
-import TodoForm from "./containers/TodoForm";
+import TodoForm from "./components/TodoForm";
+import TodoContainer from "./containers/TodoContainer";
 
 const AppWrapper = styled.div`
     max-width: 650px;
@@ -15,7 +14,7 @@ const AppWrapper = styled.div`
 const App = () => {
     return (
      <AppWrapper>
-         <TodoList/>
+         <TodoContainer/>
          <TodoForm/>
      </AppWrapper>
     )

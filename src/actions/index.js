@@ -3,8 +3,3 @@ export const addTodo = text => ({
    id: (+new Date).toString(6),
    text
 });
-
-export const toggleTodo = id =>({
-   type: 'TOGGLE_TODO',
-   id
-});

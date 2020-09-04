@@ -10,7 +10,7 @@ const Line = styled.hr`
     background-color: rgba(0,0,0,0.5);
 `;
 
-const ListItem = styled.li`
+const ListItem = styled.div`
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
