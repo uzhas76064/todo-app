@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import TodoForm from "./components/TodoForm";
 import TodoContainer from "./containers/TodoContainer";
 
 const AppWrapper = styled.div`
@@ -15,7 +14,6 @@ const App = () => {
     return (
      <AppWrapper>
          <TodoContainer/>
-         <TodoForm/>
      </AppWrapper>
     )
 };

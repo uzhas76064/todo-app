@@ -46,13 +46,13 @@ const ButtonNew = styled(Button)`
     padding: 11px 37px 10px 35px;
 `;
 
-const TodoForm = () => {
+const TodoForm = (props) => {
     return (
         <form action="">
-            <Input type="text" placeholder="Enter a new todo item"/>
+            <Input onChange={props.updateNewTodoBody} type="text" placeholder="Enter a new todo item"/>
             <Buttons>
                 <ButtonHide>Hide completed</ButtonHide>
-                <ButtonNew>Add todo</ButtonNew>
+                <ButtonNew onClick={props.addNewTodo}>Add todo</ButtonNew>
             </Buttons>
         </form>
     );

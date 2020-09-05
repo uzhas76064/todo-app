@@ -1,5 +1,11 @@
-export const addTodo = text => ({
+const {v4: uuidv4} = require('uuid');
+
+export const addTodo = () => ({
    type: 'ADD_TODO',
-   id: (+new Date).toString(6),
-   text
+   id: uuidv4(),
 });
+
+export const updateTodoBody = todoBody => ({
+   type: 'UPDATE_TODO_BODY',
+   todoBody: todoBody
+})
