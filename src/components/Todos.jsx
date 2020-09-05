@@ -5,7 +5,11 @@ import TodoForm from "./TodoForm";
 const Todos = props => {
     let todoState = props.tasks.todos;
 
-    let todos = todoState.map((item) => <TodoItem text={item.text} key={item.id}/>);
+    let toggleTodo = (id) => {
+        props.toggleTodo(id);
+    }
+
+    let todos = todoState.map((item) => <TodoItem onClick={() => toggleTodo(item.id)} completed={item.completed} text={item.text} key={item.id}/>);
 
     let updateNewTodoBody = (e) => {
         let todoBody = e.target.value;
@@ -13,14 +17,17 @@ const Todos = props => {
     }
 
     let addNewTodo = (e) => {
-        e.preventDefault();
         props.addTodo();
+    }
+
+    let onSubmitFrom = (e) => {
+        e.preventDefault();
     }
 
     return (
         <>
             {todos}
-            <TodoForm addNewTodo={addNewTodo} updateNewTodoBody={updateNewTodoBody}/>
+            <TodoForm onSubmitFrom={onSubmitFrom} addNewTodo={addNewTodo} updateNewTodoBody={updateNewTodoBody}/>
         </>
     );
 };

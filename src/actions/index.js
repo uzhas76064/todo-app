@@ -9,3 +9,8 @@ export const updateTodoBody = todoBody => ({
    type: 'UPDATE_TODO_BODY',
    todoBody: todoBody
 })
+
+export const toggleTodo = id => ({
+   type: 'TOGGLE_TO_COMPLETED',
+   id: id
+})

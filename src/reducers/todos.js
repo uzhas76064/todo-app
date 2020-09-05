@@ -1,11 +1,5 @@
-const {v4: uuidv4} = require('uuid');
-
 let initialState = {
-    todos: [
-        { text: 'Сделать уроки', completed: false, id:uuidv4() },
-        { text: 'Купить хлеб', completed: false, id:uuidv4() },
-        { text: 'Купить молоко', completed: false, id: uuidv4() }
-    ],
+    todos: [],
     newTodoBody: ''
 }
 
@@ -23,7 +17,15 @@ const todoReducers = (state = initialState, action) => {
                 todos: [...state.todos, {text: state.newTodoBody, completed: false, id: action.id}]
             }
         case 'TOGGLE_TODO':
-            return 1;
+            return {
+                ...state,
+                todos: state.todos.map(todo => {
+                    if(todo.id === action.id) {
+                        return {...todo, completed: true}
+                    }
+                    return todo;
+                })
+            };
         default: return state;
     }
 };

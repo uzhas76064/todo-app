@@ -16,12 +16,15 @@ const Input = styled.input`
     font-weight: normal;
     font-size: 18px;
     line-height: 21px;
+    margin-top: 60px;
 `;
 
 const Buttons = styled.div`
     display: flex;
     justify-content: space-evenly;
     margin-top: 14px;
+    outline: none;
+    border: none;
 `;
 
 const Button = styled.button`
@@ -48,7 +51,7 @@ const ButtonNew = styled(Button)`
 
 const TodoForm = (props) => {
     return (
-        <form action="">
+        <form onSubmit={props.onSubmitFrom} action="">
             <Input onChange={props.updateNewTodoBody} type="text" placeholder="Enter a new todo item"/>
             <Buttons>
                 <ButtonHide>Hide completed</ButtonHide>

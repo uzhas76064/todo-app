@@ -21,7 +21,7 @@ const ListItem = styled.div`
 
 const TodoItem = (props) => {
     return (
-        <ListItem>
+        <ListItem style={{textDecoration: props.completed ? 'line-through' : 'none'}} onClick={props.onClick}>
             {props.text}
            <Line/>
         </ListItem>

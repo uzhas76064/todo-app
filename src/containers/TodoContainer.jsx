@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import Todos from "../components/Todos";
-import {addTodo, updateTodoBody} from "../actions";
+import {addTodo, toggleTodo, updateTodoBody} from "../actions";
 
 const mapStateToProps = (state) => {
     console.log(state)
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         updateTodoBody: (todoBody) => dispatch(updateTodoBody(todoBody)),
-        addTodo: () => dispatch(addTodo())
+        addTodo: () => dispatch(addTodo()),
+        toggleTodo: (id) => dispatch(toggleTodo(id))
     }
 }
 
