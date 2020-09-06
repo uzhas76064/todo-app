@@ -11,6 +11,10 @@ export const updateTodoBody = todoBody => ({
 })
 
 export const toggleTodo = id => ({
-   type: 'TOGGLE_TO_COMPLETED',
+   type: 'TOGGLE_TODO',
    id: id
+})
+
+export const hideCompleted = () => ({
+   type: 'HIDE_COMPLETED',
 })

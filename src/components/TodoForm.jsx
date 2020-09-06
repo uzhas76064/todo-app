@@ -54,7 +54,7 @@ const TodoForm = (props) => {
         <form onSubmit={props.onSubmitFrom} action="">
             <Input onChange={props.updateNewTodoBody} type="text" placeholder="Enter a new todo item"/>
             <Buttons>
-                <ButtonHide>Hide completed</ButtonHide>
+                <ButtonHide onClick={props.hideCompleted}>Hide completed</ButtonHide>
                 <ButtonNew onClick={props.addNewTodo}>Add todo</ButtonNew>
             </Buttons>
         </form>
