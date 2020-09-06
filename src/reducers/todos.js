@@ -19,13 +19,15 @@ const todoReducers = (state = initialState, action) => {
         case 'TOGGLE_TODO':
             return {
                 ...state,
-                todos: state.todos.map(todo => {
-                    if(todo.id === action.id) {
-                        return {...todo, completed: true}
-                    }
-                    return todo;
-                })
+                todos: state.todos.map(todo =>
+                    (todo.id === action.id) ? { ...todo,  completed: !todo.completed}: todo
+                )
             };
+        case 'HIDE_COMPLETED':
+            return {
+                ...state,
+                todos: state.todos.filter(t => !t.completed)
+            }
         default: return state;
     }
 };
