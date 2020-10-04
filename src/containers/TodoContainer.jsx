@@ -1,9 +1,8 @@
 import {connect} from "react-redux";
 import Todos from "../components/Todos";
-import {addTodo, hideCompleted, toggleTodo, updateTodoBody} from "../actions";
+import {addTodo, hideCompleted, toggleTodo} from "../actions";
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         tasks: state.todoReducers
     }
@@ -11,8 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateTodoBody: (todoBody) => dispatch(updateTodoBody(todoBody)),
-        addTodo: () => dispatch(addTodo()),
+        addTodo: (todoBody) => dispatch(addTodo(todoBody)),
         toggleTodo: (id) => dispatch(toggleTodo(id)),
         hideCompleted: () => dispatch(hideCompleted())
     }

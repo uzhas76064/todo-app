@@ -1,5 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
+import {Field, reduxForm} from "redux-form";
+import FormControl from "../hoc/FormControl";
 
 const Input = styled.input`
     display: block;
@@ -49,16 +51,18 @@ const ButtonNew = styled(Button)`
     padding: 11px 37px 10px 35px;
 `;
 
+let InputField = FormControl(Input);
+
 const TodoForm = (props) => {
     return (
-        <form onSubmit={props.onSubmitFrom} action="">
-            <Input onChange={props.updateNewTodoBody} type="text" placeholder="Enter a new todo item"/>
+        <form onSubmit={props.handleSubmit}>
+            <Field name='todoInput' component={InputField} type="text" placeholder="Enter a new todo item"/>
             <Buttons>
                 <ButtonHide onClick={props.hideCompleted}>Hide completed</ButtonHide>
-                <ButtonNew onClick={props.addNewTodo}>Add todo</ButtonNew>
+                <ButtonNew>Add todo</ButtonNew>
             </Buttons>
         </form>
     );
 };
 
-export default TodoForm;
+export default reduxForm({form: 'todoForm'})(TodoForm);

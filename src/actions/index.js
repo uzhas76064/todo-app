@@ -1,14 +1,10 @@
 const {v4: uuidv4} = require('uuid');
 
-export const addTodo = () => ({
+export const addTodo = (todoBody) => ({
    type: 'ADD_TODO',
+   todoBody,
    id: uuidv4(),
 });
-
-export const updateTodoBody = todoBody => ({
-   type: 'UPDATE_TODO_BODY',
-   todoBody: todoBody
-})
 
 export const toggleTodo = id => ({
    type: 'TOGGLE_TODO',

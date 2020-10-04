@@ -23,9 +23,8 @@ const TodoItem = (props) => {
     return (
         <ListItem style={{textDecoration: props.completed ? 'line-through' : 'none'}} onClick={props.onClick}>
             {props.text}
-           <Line/>
+            <Line/>
         </ListItem>
     );
-};
-
+}
 export default TodoItem;
