@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import {Field, reduxForm} from "redux-form";
 import FormControl from "../hoc/FormControl";
+import {required} from "../validators/validators";
 
 const Input = styled.input`
     display: block;
@@ -56,7 +57,7 @@ let InputField = FormControl(Input);
 const TodoForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field name='todoInput' component={InputField} type="text" placeholder="Enter a new todo item"/>
+            <Field validate={[required]} name='todoInput' component={InputField} type="text" placeholder="Enter a new todo item"/>
             <Buttons>
                 <ButtonHide onClick={props.hideCompleted}>Hide completed</ButtonHide>
                 <ButtonNew>Add todo</ButtonNew>
