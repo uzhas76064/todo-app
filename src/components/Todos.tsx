@@ -1,33 +1,8 @@
 import { useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
-import styled from "styled-components";
 import {Todo} from "../types.ts";
-
-const FilterButtons = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-`;
-
-const FilterButton = styled.button<{ active: boolean }>`
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-  background-color: ${({ active }) => (active ? "#6a1b9a" : "#ffffff")};
-  color: ${({ active }) => (active ? "#ffffff" : "#6a1b9a")};
-  box-shadow: ${({ active }) => (active ? "0 4px 10px rgba(0, 0, 0, 0.2)" : "none")};
-  transition: all 0.3s;
-
-  &:hover {
-    background-color: ${({ active }) => (active ? "#4a148c" : "#f3e5f5")};
-    color: ${({ active }) => (active ? "#ffffff" : "#6a1b9a")};
-  }
-`;
+import {FilterButton, FilterButtons} from "../styled-components/UI.tsx";
 
 const Todos = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -57,7 +32,6 @@ const Todos = () => {
 
     return (
         <>
-
             <FilterButtons>
                 <FilterButton
                     active={filter === "all"}
