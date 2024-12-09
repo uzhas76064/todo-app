@@ -1,11 +1,15 @@
-export type Action = {
-    type: string,
-    todoBody: string,
-    id: string
-};
+export type TodoFormProps  = {
+    onSubmit: (text: string) => void;
+}
+
+export type TodoItemProps = {
+    text: string,
+    completed: boolean,
+    onClick: () => void
+}
 
 export type Todo = {
-    id: string,
-    completed: boolean,
-    todoBody: string
-};
+    id: number;
+    text: string;
+    completed: boolean;
+}

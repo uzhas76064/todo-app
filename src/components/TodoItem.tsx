@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {TodoItemProps} from "../types.ts";
 
 const Line = styled.hr`
     width: 10%;
@@ -17,12 +18,6 @@ const ListItem = styled.div`
     line-height: 28px;
     cursor: pointer;
 `;
-
-interface TodoItemProps {
-    text: string;
-    completed: boolean;
-    onClick: () => void;
-}
 
 const TodoItem = ({ text, completed, onClick }: TodoItemProps) => {
     return (

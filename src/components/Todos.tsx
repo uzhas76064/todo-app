@@ -2,6 +2,7 @@ import { useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
+import {Todo} from "../types.ts";
 
 const FilterButtons = styled.div`
   display: flex;
@@ -27,12 +28,6 @@ const FilterButton = styled.button<{ active: boolean }>`
     color: ${({ active }) => (active ? "#ffffff" : "#6a1b9a")};
   }
 `;
-
-interface Todo {
-    id: number;
-    text: string;
-    completed: boolean;
-}
 
 const Todos = () => {
     const [todos, setTodos] = useState<Todo[]>([]);

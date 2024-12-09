@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React, { useState } from "react";
+import {TodoFormProps} from "../types.ts";
 
 const Input = styled.input`
     display: block;
@@ -43,10 +44,6 @@ const ButtonNew = styled(Button)`
     background: #FFFFFF;
     padding: 11px 37px 10px 35px;
 `;
-
-interface TodoFormProps {
-    onSubmit: (text: string) => void;
-}
 
 const TodoForm = ({ onSubmit }: TodoFormProps) => {
     const [inputValue, setInputValue] = useState("");
