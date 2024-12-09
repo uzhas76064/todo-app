@@ -1,8 +1,5 @@
-import React from "react";
 import styled from 'styled-components';
-import {Field, reduxForm} from "redux-form";
-import FormControl from "../hoc/FormControl";
-import {required} from "../validators/validators";
+import React, { useState } from "react";
 
 const Input = styled.input`
     display: block;
@@ -14,7 +11,7 @@ const Input = styled.input`
     outline: none;
     border-bottom: 1px solid;
     color: rgba(0, 0, 0, 0.4);
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -42,28 +39,37 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-const ButtonHide = styled(Button)`
-    background: #FFE482;
-    padding: 11px 10px 10px 12px;
-`;
-
 const ButtonNew = styled(Button)`
     background: #FFFFFF;
     padding: 11px 37px 10px 35px;
 `;
 
-let InputField = FormControl(Input);
+interface TodoFormProps {
+    onSubmit: (text: string) => void;
+}
 
-const TodoForm = (props) => {
+const TodoForm = ({ onSubmit }: TodoFormProps) => {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        onSubmit(inputValue);
+        setInputValue("");
+    };
+
     return (
-        <form onSubmit={props.handleSubmit}>
-            <Field validate={[required]} name='todoInput' component={InputField} type="text" placeholder="Enter a new todo item"/>
+        <form onSubmit={handleSubmit}>
+            <Input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Add a new todo"
+            />
             <Buttons>
-                <ButtonHide onClick={props.hideCompleted}>Hide completed</ButtonHide>
-                <ButtonNew>Add todo</ButtonNew>
+                <ButtonNew type="submit">Add todo</ButtonNew>
             </Buttons>
         </form>
     );
 };
 
-export default reduxForm({form: 'todoForm'})(TodoForm);
+export default TodoForm;

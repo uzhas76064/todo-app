@@ -1,4 +1,3 @@
-import React from "react";
 import styled from 'styled-components';
 
 const Line = styled.hr`
@@ -11,7 +10,7 @@ const Line = styled.hr`
 `;
 
 const ListItem = styled.div`
-    font-family: Roboto;
+    font-family: Roboto,sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -19,12 +18,23 @@ const ListItem = styled.div`
     cursor: pointer;
 `;
 
-const TodoItem = (props) => {
+interface TodoItemProps {
+    text: string;
+    completed: boolean;
+    onClick: () => void;
+}
+
+const TodoItem = ({ text, completed, onClick }: TodoItemProps) => {
     return (
-        <ListItem style={{textDecoration: props.completed ? 'line-through' : 'none'}} onClick={props.onClick}>
-            {props.text}
-            <Line/>
+        <ListItem
+            style={{ textDecoration: completed ? "line-through" : "none" }}
+            onClick={onClick}
+        >
+            {text}
+            <Line />
         </ListItem>
     );
-}
+};
+
 export default TodoItem;
+

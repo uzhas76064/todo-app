@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TodoContainer from "./containers/TodoContainer";
+import Todos from "./components/Todos.tsx";
 
 const AppWrapper = styled.div`
     max-width: 650px;
@@ -11,9 +11,11 @@ const AppWrapper = styled.div`
 
 const App = () => {
     return (
-     <AppWrapper>
-         <TodoContainer/>
-     </AppWrapper>
-    )
+        <AppWrapper>
+            <Todos />
+        </AppWrapper>
+    );
 };
+
 export default App;
+

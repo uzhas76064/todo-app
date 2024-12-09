@@ -1,30 +1,99 @@
-import React from 'react';
-import TodoItem from "./TodoItem";
+import { useState } from "react";
 import TodoForm from "./TodoForm";
+import TodoItem from "./TodoItem";
+import styled from "styled-components";
 
-const Todos = props => {
-    let todoState = props.tasks.todos;
+const FilterButtons = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+`;
 
-    let toggleTodo = (id) => {
-        props.toggleTodo(id);
-    }
+const FilterButton = styled.button<{ active: boolean }>`
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: ${({ active }) => (active ? "#6a1b9a" : "#ffffff")};
+  color: ${({ active }) => (active ? "#ffffff" : "#6a1b9a")};
+  box-shadow: ${({ active }) => (active ? "0 4px 10px rgba(0, 0, 0, 0.2)" : "none")};
+  transition: all 0.3s;
 
-    let todos = todoState.map((item) => <TodoItem onClick={() => toggleTodo(item.id)} completed={item.completed} text={item.todoBody} key={item.id}/>);
+  &:hover {
+    background-color: ${({ active }) => (active ? "#4a148c" : "#f3e5f5")};
+    color: ${({ active }) => (active ? "#ffffff" : "#6a1b9a")};
+  }
+`;
 
-    let onSubmit = (values) => {
-        console.log(values.todoInput)
-        props.addTodo(values.todoInput)
-    }
+interface Todo {
+    id: number;
+    text: string;
+    completed: boolean;
+}
 
-    let hideCompleted = () => {
-        props.hideCompleted();
-    }
+const Todos = () => {
+    const [todos, setTodos] = useState<Todo[]>([]);
+    const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+
+    const addTodo = (text: string) => {
+        if (text.trim()) {
+            const newTodo = { id: Date.now(), text, completed: false };
+            setTodos([...todos, newTodo]);
+        }
+    };
+
+    const toggleTodo = (id: number) => {
+        setTodos(todos.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+    };
+
+    const filteredTodos = () => {
+        switch (filter) {
+            case "active":
+                return todos.filter(todo => !todo.completed);
+            case "completed":
+                return todos.filter(todo => todo.completed);
+            default:
+                return todos;
+        }
+    };
 
     return (
         <>
-            {todos}
-            <TodoForm hideCompleted={hideCompleted}
-                      onSubmit={onSubmit}/>
+
+            <FilterButtons>
+                <FilterButton
+                    active={filter === "all"}
+                    onClick={() => setFilter("all")}
+                >
+                    All
+                </FilterButton>
+                <FilterButton
+                    active={filter === "active"}
+                    onClick={() => setFilter("active")}
+                >
+                    Active
+                </FilterButton>
+                <FilterButton
+                    active={filter === "completed"}
+                    onClick={() => setFilter("completed")}
+                >
+                    Completed
+                </FilterButton>
+            </FilterButtons>
+
+            <TodoForm onSubmit={(text: string) => addTodo(text)} />
+
+            {filteredTodos().map(todo => (
+                <TodoItem
+                    key={todo.id}
+                    text={todo.text}
+                    completed={todo.completed}
+                    onClick={() => toggleTodo(todo.id)}
+                />
+            ))}
         </>
     );
 };
