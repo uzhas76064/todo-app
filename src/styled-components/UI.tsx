@@ -75,3 +75,21 @@ export const FilterButton = styled.button<{ active: boolean }>`
     color: ${({ active }) => (active ? "#ffffff" : "#6a1b9a")};
   }
 `;
+
+export const Line = styled.hr`
+    width: 10%;
+    border: none;
+    margin-left: 0;
+    color: rgba(0,0,0,0.5);
+    height: 1px;
+    background-color: rgba(0,0,0,0.5);
+`;
+
+export const ListItem = styled.div`
+    font-family: Roboto,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    cursor: pointer;
+`;
