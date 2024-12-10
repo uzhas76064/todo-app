@@ -1,5 +1,5 @@
-import {TodoItemProps} from "../types.ts";
-import {Line, ListItem} from "../styled-components/UI.tsx";
+import {TodoItemProps} from "../types";
+import {Line, ListItem} from "../styled-components/UI";
 
 const TodoItem = ({ text, completed, onClick }: TodoItemProps) => {
     return (

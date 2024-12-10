@@ -1,8 +1,8 @@
 import { useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
-import {Todo} from "../types.ts";
-import {FilterButton, FilterButtons} from "../styled-components/UI.tsx";
+import {Todo} from "../types";
+import {FilterButton, FilterButtons} from "../styled-components/UI";
 
 const Todos = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
